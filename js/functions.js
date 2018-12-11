@@ -31,7 +31,6 @@ while (S) {
     } else {
         // Si la fecha no es correcta
         alert("FECHA INCORRECTA. INTÉNTALO DE NUEVO.");
-
     }
     // Da la opción de seguir o salir del programa
     seguir = prompt("Pulsar la tecla S para continuar....");
