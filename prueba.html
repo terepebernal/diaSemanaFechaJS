@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2 class="h2-js">Algoritmo día de la semana de una fecha en JS</h2>
+            <p class="justificado">En este caso pasa lo mismo que en el anterior, para poder ejecutar el algoritmo en JavaScript, lo primero es crear un archivo .html, <span class="t-Mar"><em>index.html</em></span>, que haga la llamada a otro archivo .js, <span class="t-Mar"><em>functions.js</em></span>,
+                que estará guardado en una carpeta llamada js y tendrá escrito el algoritmo en JavaScript. Una vez escrito todo el código bastará con abrir el archivo <strong>index.html</strong> en el navegador para que se ejecute el algoritmo. El resultado
+                se mostrará por medio de un <span class="t-Ver"><em>alert</em></span>, como se muestra en la siguiente imagen para el <strong>15 de mayo de 2035</strong>:</p>
+            <a target="_blank" href="https://terepebernal.com/wp-content/uploads/2018/12/dia-semana-de-fecha.jpg"><img src="https://terepebernal.com/wp-content/uploads/2018/12/dia-semana-de-fecha.jpg" title="algoritmo día semana de fecha para el 15 de mayo de 2035" alt="dia semana de fecha" width="446" height="485" class="aligncenter size-full wp-image-2154"
+                /></a>
+            <p class="justificado">A continuación se muestra el código del archivo .html, que es exactamente igual que en el anterior ejemplo, solo se ha cambiado la etiqueta <span class="t-Mar"><em><title></em></span>:</p>
+            <pre class="line-numbers language-html"><code>
+&lt!DOCTYPE html&gt
+&lthtml lang="es"&gt
+&lthead&gt
+    &ltmeta charset="UTF-8"&gt
+    &ltmeta name="viewport" content="width=device-width, initial-scale=1.0"&gt
+    &ltmeta http-equiv="X-UA-Compatible" content="ie=edge"&gt
+    &lttitle&gtDía de la semana de una fecha en JavaScript&lt/title&gt
+&lt/head&gt
+&ltbody&gt
+    &ltscript src="js/functions.js"&gt&lt/script&gt
+&lt/body&gt
+&lt/html&gt
+</code></pre>
+            </p>
+        </div>
+        <!-- .col -->
+        <div class="col-12">
+            <p class="justificado">El archivo <strong>functions.js</strong> contiene el resto de código, que contiene la parte principal y el resto de funciones necesarias para realizar el algoritmo día de la semana de una fecha. A continuación te muestro el programa principal,
+                que utilizando las <span class="t-Ver"><em>funciones alert y prompt</em></span> de JS, <strong>pide por teclado una fecha al usuario</strong>, llama a la <span class="t-Mar"><em>función  isDateOk</em></span>, para comprobar que <strong>la fecha tiene el formato correcto y es válida</strong>,
+                y si lo es muestra mediante un <span class="t-Ver"><em>alert</em></span> el <strong>día de la semana en que cae la fecha</strong> introducida por el usuario y, mediante un <span class="t-Ver"><em>bucle while</em></span> <strong>permite seguir introduciendo fechas</strong>                mientras se pulse la tecla "S".</p>
+            <pre class="line-numbers language-javascript"><code>/*
+ *  Mostrará por pantalla el día de la semana en el que
+ *  cae la fecha que se pedirá al usuario por teclado.
+ *  El valor del año estará entre 1601 y 3000. 
+ */
+
+// Declaración de variables
+var dateC; // Cadena de texto
+var year, month, day, fDM, D, dW; // Enteros
+var S, OK; // Booleanos
+var seguir; // Caracter
+
+S = true;
+while (S) {
+    // Pedir por teclado la fecha indicando el formato
+    dateC = prompt('FECHA (DD/MM/AAAA)....');
+    // Comprobar que la fecha es válida
+    OK = isDateOk(dateC);
+    if (OK) {;
+        // Si la fecha es correcta
+        day = parseInt(dateC.substring(0, 2));
+        month = parseInt(dateC.substring(3, 5));
+        year = parseInt(dateC.substring(6, 10));
+        fDM = firstDayMonth(year, month); // Primer día del mes
+        D = ((day - 1) % 7);
+        dW = fDM + D; // Día de la semana en que cae la fecha
+        if (dW > 7) {
+            dW = (dW - 7);
+        }
+        alert("LA FECHA " + dateC + " CAE EN " + dayWeekText(dW));
+    } else {
+        // Si la fecha no es correcta
+        alert("FECHA INCORRECTA. INTÉNTALO DE NUEVO.");
+
+    }
+    // Da la opción de seguir o salir del programa
+    seguir = prompt("Pulsar la tecla S para continuar....");
+    if (seguir == 's' | seguir == 'S') {
+        S = true;
+    } else {
+        S = false;
+    }
+}
+</code></pre>
+            <p class="justificado">Si lo comparas con <a target="_blank" href="https://terepebernal.com/pseudocodigo/calendario-con-pseint-1/#Algoritmo_calendario">el mismo algoritmo hecho en pseudocódigo</a>, comprobarás que se parecen mucho.</p>
+        </div>
+        <!-- .col -->
+        <div class="col-12">
+            <h2 class="h2-js">Resto de funciones del algoritmo día de la semana de una fecha en JS</h2>
+            <p class="justificado">Las funciones que son llamadas desde drawMonth, mencionadas en el punto anterior, y el resto de funciones que completan el algoritmo calendario en JavaScript puedes verlas y descargarlas de GitHub en el <a target="_blank" href="https://github.com/terepebernal/hojaCalendarioJS">repositorio hojaCalendarioJS</a>.
+                También puedes ver y descargar, si quieres, el <a target="_blank" href="https://github.com/terepebernal/hojaCalendarioPSeInt">repositorio hojaCalendarioPSeInt</a>. Si comparas ambos códigos verás que se parecen mucho.
+            </p>
+        </div>
+        <!-- .col -->
+    </div>
+    <!-- .row -->
+</body>
+
+</html>
