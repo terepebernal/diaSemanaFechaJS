@@ -202,6 +202,9 @@ function dayOk(day, month, year) {
                 OK = true;
         }
     }
+    else {
+        OK = false;
+    }
 
     return OK;
 }
